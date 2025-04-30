@@ -6,8 +6,6 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = "Apache-2.0"
 license-files = [ "LICENSE" ]
-authors = [{ name = "Sébastien Eustace", email = "sebastien@eustace.io" }]
-keywords = ['datetime', 'date', 'time']
 classifiers = [
     "License :: OSI Approved :: Apache Software License",
     "Environment :: WebAssembly :: WASI",
