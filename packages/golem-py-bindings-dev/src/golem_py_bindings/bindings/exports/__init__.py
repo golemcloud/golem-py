@@ -8,9 +8,6 @@ import weakref
 from ..types import Result, Ok, Err, Some
 
 
-class OplogProcessor(Protocol):
-    pass
-
 class LoadSnapshot(Protocol):
 
     @abstractmethod
@@ -19,10 +16,13 @@ class LoadSnapshot(Protocol):
         Tries to load a user-defined snapshot, setting up the worker's state based on it.
         The function can return with a failure to indicate that the update is not possible.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.str)`
+        Raises: `bindings.types.Err(bindings.imports.str)`
         """
         raise NotImplementedError
 
+
+class OplogProcessor(Protocol):
+    pass
 
 class SaveSnapshot(Protocol):
 

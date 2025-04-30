@@ -39,7 +39,7 @@ module-root = "src"
 members = ["packages/*"]
 
 [tool.uv.sources]
-golem-py-bindings = { workspace = true }
+golem-py-bindings = { workspace = true, marker = "sys_platform == 'never'" }
 golem-py-bindings-dev = { workspace = true }
 
 [tool.uv]

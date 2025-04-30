@@ -6,8 +6,8 @@ from abc import abstractmethod
 import weakref
 
 from ..types import Result, Ok, Err, Some
-from ..imports import wall_clock
 from ..imports import poll
+from ..imports import wall_clock
 
 @dataclass
 class Uuid:
@@ -347,12 +347,12 @@ class WasmRpc:
         raise NotImplementedError
     def invoke_and_await(self, function_name: str, function_params: List[WitValue]) -> WitValue:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.golem_rpc_types.RpcError)`
+        Raises: `bindings.types.Err(bindings.imports.golem_rpc_types.RpcError)`
         """
         raise NotImplementedError
     def invoke(self, function_name: str, function_params: List[WitValue]) -> None:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.golem_rpc_types.RpcError)`
+        Raises: `bindings.types.Err(bindings.imports.golem_rpc_types.RpcError)`
         """
         raise NotImplementedError
     def async_invoke_and_await(self, function_name: str, function_params: List[WitValue]) -> FutureInvokeResult:
@@ -383,7 +383,7 @@ def parse_uuid(uuid: str) -> Uuid:
     """
     Parses a UUID from a string
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.str)`
+    Raises: `bindings.types.Err(bindings.imports.str)`
     """
     raise NotImplementedError
 

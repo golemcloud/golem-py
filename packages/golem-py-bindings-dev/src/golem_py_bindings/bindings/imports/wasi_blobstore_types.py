@@ -50,7 +50,7 @@ class OutgoingValue:
         raise NotImplementedError
     def outgoing_value_write_body(self) -> streams.OutputStream:
         """
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:
@@ -79,12 +79,12 @@ class IncomingValue:
     
     def incoming_value_consume_sync(self) -> bytes:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.str)`
+        Raises: `bindings.types.Err(bindings.imports.str)`
         """
         raise NotImplementedError
     def incoming_value_consume_async(self) -> streams.InputStream:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.str)`
+        Raises: `bindings.types.Err(bindings.imports.str)`
         """
         raise NotImplementedError
     def size(self) -> int:

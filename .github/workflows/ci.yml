@@ -26,7 +26,7 @@ jobs:
         run: uv run ruff check
 
       - name: Check the project builds
-        run: uv build
+        run: uv build --all-packages
 
       - name: Run tests
         run: uv run pytest --junit-xml=test-results.xml tests
@@ -59,7 +59,7 @@ jobs:
         uses: battila7/get-version-action@v2
 
       - name: Build the project
-        run: uv build
+        run: uv build --all-packages
 
       - name: Publish to pypi
         run: uv publish

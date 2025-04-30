@@ -7,8 +7,8 @@ import weakref
 
 from ..types import Result, Ok, Err, Some
 from ..imports import host
-from ..imports import oplog
 from ..imports import golem_rpc_types
+from ..imports import oplog
 
 @dataclass
 class AccountInfo:
@@ -41,7 +41,7 @@ class Processor(Protocol):
         The `first-entry-index` parameter contains the index of the first entry in the list of `entries`.
         The `entries` parameteter always contains at least one element.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.exports.str)`
+        Raises: `bindings.types.Err(bindings.exports.str)`
         """
         raise NotImplementedError
 

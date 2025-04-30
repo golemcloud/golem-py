@@ -38,7 +38,7 @@ class Bucket:
         
         If any error occurs, including if the bucket does not exist, it returns an `Err(error)`.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+        Raises: `bindings.types.Err(bindings.imports.Any)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:
@@ -68,7 +68,7 @@ class OutgoingValue:
         Writes the value to the output-stream asynchronously.
         If any other error occurs, it returns an `Err(error)`.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+        Raises: `bindings.types.Err(bindings.imports.Any)`
         """
         raise NotImplementedError
     def outgoing_value_write_body_sync(self, value: bytes) -> None:
@@ -76,7 +76,7 @@ class OutgoingValue:
         Writes the value to the output-stream synchronously.
         If any other error occurs, it returns an `Err(error)`.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+        Raises: `bindings.types.Err(bindings.imports.Any)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:
@@ -111,7 +111,7 @@ class IncomingValue:
         Consumes the value synchronously and returns the value as a list of bytes.
         If any other error occurs, it returns an `Err(error)`.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+        Raises: `bindings.types.Err(bindings.imports.Any)`
         """
         raise NotImplementedError
     def incoming_value_consume_async(self) -> streams.InputStream:
@@ -119,7 +119,7 @@ class IncomingValue:
         Consumes the value asynchronously and returns the value as an `input-stream`.
         If any other error occurs, it returns an `Err(error)`.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+        Raises: `bindings.types.Err(bindings.imports.Any)`
         """
         raise NotImplementedError
     def incoming_value_size(self) -> int:
@@ -127,7 +127,7 @@ class IncomingValue:
         The size of the value in bytes.
         If the size is unknown or unavailable, this function returns an `Err(error)`.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+        Raises: `bindings.types.Err(bindings.imports.Any)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:

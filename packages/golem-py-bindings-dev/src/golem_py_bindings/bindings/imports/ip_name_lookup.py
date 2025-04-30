@@ -6,8 +6,8 @@ from abc import abstractmethod
 import weakref
 
 from ..types import Result, Ok, Err, Some
-from ..imports import network
 from ..imports import poll
+from ..imports import network
 
 class ResolveAddressStream:
     
@@ -27,7 +27,7 @@ class ResolveAddressStream:
         - `permanent-resolver-failure`: A permanent failure in name resolution occurred. (EAI_FAIL)
         - `would-block`:                A result is not available yet. (EWOULDBLOCK, EAGAIN)
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.network.ErrorCode)`
+        Raises: `bindings.types.Err(bindings.imports.network.ErrorCode)`
         """
         raise NotImplementedError
     def subscribe(self) -> poll.Pollable:
@@ -73,7 +73,7 @@ def resolve_addresses(network: network.Network, name: str) -> ResolveAddressStre
     - <https://learn.microsoft.com/en-us/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo>
     - <https://man.freebsd.org/cgi/man.cgi?query=getaddrinfo&sektion=3>
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.network.ErrorCode)`
+    Raises: `bindings.types.Err(bindings.imports.network.ErrorCode)`
     """
     raise NotImplementedError
 

@@ -8,7 +8,6 @@ resolution-markers = [
 
 [manifest]
 members = [
-    "generated-placeholder-bindings",
     "golem-py",
     "golem-py-bindings",
     "golem-py-bindings-dev",
@@ -47,21 +46,6 @@ wheels = [
 ]
 
 [[package]]
-name = "generated-placeholder-bindings"
-version = "0.1.0"
-source = { editable = "packages/generated-placeholder-bindings" }
-
-[package.dev-dependencies]
-dev = [
-    { name = "componentize-py" },
-]
-
-[package.metadata]
-
-[package.metadata.requires-dev]
-dev = [{ name = "componentize-py", specifier = "==0.16.0" }]
-
-[[package]]
 name = "golem-py"
 version = "0.1.0"
 source = { editable = "." }
@@ -78,7 +62,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "golem-py-bindings", editable = "packages/golem-py-bindings" }]
+requires-dist = [
+    { name = "golem-py-bindings", marker = "sys_platform != 'never'", specifier = "==0.1.0" },
+    { name = "golem-py-bindings", marker = "sys_platform == 'never'", editable = "packages/golem-py-bindings" },
+]
 
 [package.metadata.requires-dev]
 dev = [
@@ -98,11 +85,11 @@ name = "golem-py-bindings-dev"
 version = "0.1.0"
 source = { editable = "packages/golem-py-bindings-dev" }
 dependencies = [
-    { name = "generated-placeholder-bindings" },
+    { name = "componentize-py" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "generated-placeholder-bindings", editable = "packages/generated-placeholder-bindings" }]
+requires-dist = [{ name = "componentize-py", specifier = "==0.16.0" }]
 
 [[package]]
 name = "iniconfig"

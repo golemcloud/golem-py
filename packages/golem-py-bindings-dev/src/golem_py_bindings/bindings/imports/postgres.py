@@ -752,27 +752,27 @@ class DbTransaction:
     
     def query(self, statement: str, params: List[DbValue]) -> DbResult:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.postgres.Error)`
+        Raises: `bindings.types.Err(bindings.imports.postgres.Error)`
         """
         raise NotImplementedError
     def query_stream(self, statement: str, params: List[DbValue]) -> DbResultStream:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.postgres.Error)`
+        Raises: `bindings.types.Err(bindings.imports.postgres.Error)`
         """
         raise NotImplementedError
     def execute(self, statement: str, params: List[DbValue]) -> int:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.postgres.Error)`
+        Raises: `bindings.types.Err(bindings.imports.postgres.Error)`
         """
         raise NotImplementedError
     def commit(self) -> None:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.postgres.Error)`
+        Raises: `bindings.types.Err(bindings.imports.postgres.Error)`
         """
         raise NotImplementedError
     def rollback(self) -> None:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.postgres.Error)`
+        Raises: `bindings.types.Err(bindings.imports.postgres.Error)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:
@@ -791,27 +791,27 @@ class DbConnection:
     @classmethod
     def open(cls, address: str) -> Self:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.postgres.Error)`
+        Raises: `bindings.types.Err(bindings.imports.postgres.Error)`
         """
         raise NotImplementedError
     def query(self, statement: str, params: List[DbValue]) -> DbResult:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.postgres.Error)`
+        Raises: `bindings.types.Err(bindings.imports.postgres.Error)`
         """
         raise NotImplementedError
     def query_stream(self, statement: str, params: List[DbValue]) -> DbResultStream:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.postgres.Error)`
+        Raises: `bindings.types.Err(bindings.imports.postgres.Error)`
         """
         raise NotImplementedError
     def execute(self, statement: str, params: List[DbValue]) -> int:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.postgres.Error)`
+        Raises: `bindings.types.Err(bindings.imports.postgres.Error)`
         """
         raise NotImplementedError
     def begin_transaction(self) -> DbTransaction:
         """
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.postgres.Error)`
+        Raises: `bindings.types.Err(bindings.imports.postgres.Error)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:

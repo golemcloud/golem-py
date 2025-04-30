@@ -47,7 +47,7 @@ def get_many(bucket: wasi_keyvalue_types.Bucket, keys: List[str]) -> List[Option
     
     If any other error occurs, it returns an `Err(error)`.
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+    Raises: `bindings.types.Err(bindings.imports.Any)`
     """
     raise NotImplementedError
 
@@ -63,7 +63,7 @@ def keys(bucket: wasi_keyvalue_types.Bucket) -> List[str]:
     
     If any error occurs, it returns an `Err(error)`.
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+    Raises: `bindings.types.Err(bindings.imports.Any)`
     """
     raise NotImplementedError
 
@@ -84,7 +84,7 @@ def set_many(bucket: wasi_keyvalue_types.Bucket, key_values: List[Tuple[str, was
     
     Other concurrent operations may also be able to see the partial results.
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+    Raises: `bindings.types.Err(bindings.imports.Any)`
     """
     raise NotImplementedError
 
@@ -104,7 +104,7 @@ def delete_many(bucket: wasi_keyvalue_types.Bucket, keys: List[str]) -> None:
     
     Other concurrent operations may also be able to see the partial results.
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+    Raises: `bindings.types.Err(bindings.imports.Any)`
     """
     raise NotImplementedError
 

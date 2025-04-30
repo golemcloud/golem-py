@@ -13,8 +13,8 @@ from abc import abstractmethod
 import weakref
 
 from ..types import Result, Ok, Err, Some
-from ..imports import poll
 from ..imports import error
+from ..imports import poll
 
 
 @dataclass
@@ -69,7 +69,7 @@ class InputStream:
         as a return value by the callee. The callee may return a list of bytes
         less than `len` in size while more bytes are available for reading.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def blocking_read(self, len: int) -> bytes:
@@ -77,7 +77,7 @@ class InputStream:
         Read bytes from a stream, after blocking until at least one byte can
         be read. Except for blocking, behavior is identical to `read`.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def skip(self, len: int) -> int:
@@ -87,7 +87,7 @@ class InputStream:
         Behaves identical to `read`, except instead of returning a list
         of bytes, returns the number of bytes consumed from the stream.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def blocking_skip(self, len: int) -> int:
@@ -95,7 +95,7 @@ class InputStream:
         Skip bytes from a stream, after blocking until at least one byte
         can be skipped. Except for blocking behavior, identical to `skip`.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def subscribe(self) -> poll.Pollable:
@@ -143,7 +143,7 @@ class OutputStream:
         become ready when this function will report at least 1 byte, or an
         error.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def write(self, contents: bytes) -> None:
@@ -156,7 +156,7 @@ class OutputStream:
         returns Err(closed) without writing if the stream has closed since
         the last call to check-write provided a permit.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def blocking_write_and_flush(self, contents: bytes) -> None:
@@ -186,7 +186,7 @@ class OutputStream:
         let _ = this.check-write();         // eliding error handling
         ```
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def flush(self) -> None:
@@ -202,7 +202,7 @@ class OutputStream:
         completed. The `subscribe` pollable will become ready when the
         flush has completed and the stream can accept more writes.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def blocking_flush(self) -> None:
@@ -210,7 +210,7 @@ class OutputStream:
         Request to flush buffered output, and block until flush completes
         and stream is ready for writing again.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def subscribe(self) -> poll.Pollable:
@@ -236,7 +236,7 @@ class OutputStream:
         passing a list of bytes, you simply pass the number of zero-bytes
         that should be written.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def blocking_write_zeroes_and_flush(self, len: int) -> None:
@@ -266,7 +266,7 @@ class OutputStream:
         let _ = this.check-write();         // eliding error handling
         ```
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def splice(self, src: InputStream, len: int) -> int:
@@ -285,7 +285,7 @@ class OutputStream:
         This function returns the number of bytes transferred; it may be less
         than `len`.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def blocking_splice(self, src: InputStream, len: int) -> int:
@@ -296,7 +296,7 @@ class OutputStream:
         `output-stream` is ready for writing, and the `input-stream`
         is ready for reading, before performing the `splice`.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.streams.StreamError)`
+        Raises: `bindings.types.Err(bindings.imports.streams.StreamError)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:

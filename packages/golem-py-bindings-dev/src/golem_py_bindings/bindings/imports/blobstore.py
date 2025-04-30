@@ -17,7 +17,7 @@ def create_container(name: str) -> container.Container:
     """
     creates a new empty container
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.str)`
+    Raises: `bindings.types.Err(bindings.imports.str)`
     """
     raise NotImplementedError
 
@@ -25,7 +25,7 @@ def get_container(name: str) -> container.Container:
     """
     retrieves a container by name
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.str)`
+    Raises: `bindings.types.Err(bindings.imports.str)`
     """
     raise NotImplementedError
 
@@ -33,7 +33,7 @@ def delete_container(name: str) -> None:
     """
     deletes a container and all objects within it
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.str)`
+    Raises: `bindings.types.Err(bindings.imports.str)`
     """
     raise NotImplementedError
 
@@ -41,7 +41,7 @@ def container_exists(name: str) -> bool:
     """
     returns true if the container exists
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.str)`
+    Raises: `bindings.types.Err(bindings.imports.str)`
     """
     raise NotImplementedError
 
@@ -51,7 +51,7 @@ def copy_object(src: wasi_blobstore_types.ObjectId, dest: wasi_blobstore_types.O
     returns an error if the target container does not exist.
     overwrites destination object if it already existed.
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.str)`
+    Raises: `bindings.types.Err(bindings.imports.str)`
     """
     raise NotImplementedError
 
@@ -61,7 +61,7 @@ def move_object(src: wasi_blobstore_types.ObjectId, dest: wasi_blobstore_types.O
     returns an error if the destination container does not exist.
     overwrites destination object if it already existed.
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.str)`
+    Raises: `bindings.types.Err(bindings.imports.str)`
     """
     raise NotImplementedError
 

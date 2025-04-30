@@ -26,7 +26,7 @@ def handle(request: types.OutgoingRequest, options: Optional[types.RequestOption
     or not allowed to be made. Otherwise, protocol errors are reported
     through the `future-incoming-response`.
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.types.ErrorCode)`
+    Raises: `bindings.types.Err(bindings.imports.types.ErrorCode)`
     """
     raise NotImplementedError
 

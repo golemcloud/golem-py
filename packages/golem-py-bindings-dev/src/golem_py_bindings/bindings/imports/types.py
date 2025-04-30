@@ -11,8 +11,8 @@ from abc import abstractmethod
 import weakref
 
 from ..types import Result, Ok, Err, Some
-from ..imports import poll
 from ..imports import streams
+from ..imports import poll
 from ..imports import error
 
 
@@ -385,7 +385,7 @@ class Fields:
         An error result will be returned if any header or value was
         syntactically invalid, or if a header was forbidden.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.types.HeaderError)`
+        Raises: `bindings.types.Err(bindings.imports.types.HeaderError)`
         """
         raise NotImplementedError
     def get(self, name: str) -> List[bytes]:
@@ -409,7 +409,7 @@ class Fields:
         
         Fails with `header-error.immutable` if the `fields` are immutable.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.types.HeaderError)`
+        Raises: `bindings.types.Err(bindings.imports.types.HeaderError)`
         """
         raise NotImplementedError
     def delete(self, name: str) -> None:
@@ -419,7 +419,7 @@ class Fields:
         
         Fails with `header-error.immutable` if the `fields` are immutable.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.types.HeaderError)`
+        Raises: `bindings.types.Err(bindings.imports.types.HeaderError)`
         """
         raise NotImplementedError
     def append(self, name: str, value: bytes) -> None:
@@ -429,7 +429,7 @@ class Fields:
         
         Fails with `header-error.immutable` if the `fields` are immutable.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.types.HeaderError)`
+        Raises: `bindings.types.Err(bindings.imports.types.HeaderError)`
         """
         raise NotImplementedError
     def entries(self) -> List[Tuple[str, bytes]]:
@@ -540,7 +540,7 @@ class IncomingBody:
         and for that backpressure to not inhibit delivery of the trailers if
         the user does not read the entire body.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     @classmethod
@@ -603,7 +603,7 @@ class IncomingRequest:
         Gives the `incoming-body` associated with this request. Will only
         return success at most once, and subsequent calls will return error.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:
@@ -649,7 +649,7 @@ class OutgoingBody:
         this `outgoing-body` may be retrieved at most once. Subsequent calls
         will return error.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     @classmethod
@@ -665,7 +665,7 @@ class OutgoingBody:
         to the body (via `write`) does not match the value given in the
         Content-Length.
         
-        Raises: `placeholder_world.types.Err(placeholder_world.imports.types.ErrorCode)`
+        Raises: `bindings.types.Err(bindings.imports.types.ErrorCode)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:
@@ -708,7 +708,7 @@ class OutgoingRequest:
         this `outgoing-request` can be retrieved at most once. Subsequent
         calls will return error.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def method(self) -> Method:
@@ -721,7 +721,7 @@ class OutgoingRequest:
         Set the Method for the Request. Fails if the string present in a
         `method.other` argument is not a syntactically valid method.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def path_with_query(self) -> Optional[str]:
@@ -736,7 +736,7 @@ class OutgoingRequest:
         When `none`, this represents an empty Path and empty Query. Fails is the
         string given is not a syntactically valid path and query uri component.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def scheme(self) -> Optional[Scheme]:
@@ -751,7 +751,7 @@ class OutgoingRequest:
         implementation may choose an appropriate default scheme. Fails if the
         string given is not a syntactically valid uri scheme.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def authority(self) -> Optional[str]:
@@ -768,7 +768,7 @@ class OutgoingRequest:
         HTTPS schemes always require an authority. Fails if the string given is
         not a syntactically valid uri authority.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def headers(self) -> Fields:
@@ -820,7 +820,7 @@ class RequestOptions:
         Set the timeout for the initial connect to the HTTP Server. An error
         return value indicates that this timeout is not supported.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def first_byte_timeout(self) -> Optional[int]:
@@ -833,7 +833,7 @@ class RequestOptions:
         Set the timeout for receiving the first byte of the Response body. An
         error return value indicates that this timeout is not supported.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def between_bytes_timeout(self) -> Optional[int]:
@@ -848,7 +848,7 @@ class RequestOptions:
         body stream. An error return value indicates that this timeout is not
         supported.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:
@@ -887,7 +887,7 @@ class OutgoingResponse:
         Set the HTTP Status Code for the Response. Fails if the status-code
         given is not a valid http status code.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def headers(self) -> Fields:
@@ -910,7 +910,7 @@ class OutgoingResponse:
         this `outgoing-response` can be retrieved at most once. Subsequent
         calls will return error.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:
@@ -984,7 +984,7 @@ class IncomingResponse:
         Returns the incoming body. May be called at most once. Returns error
         if called additional times.
         
-        Raises: `placeholder_world.types.Err(None)`
+        Raises: `bindings.types.Err(None)`
         """
         raise NotImplementedError
     def __enter__(self) -> Self:

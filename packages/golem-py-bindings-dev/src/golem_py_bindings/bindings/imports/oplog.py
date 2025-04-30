@@ -9,10 +9,10 @@ from abc import abstractmethod
 import weakref
 
 from ..types import Result, Ok, Err, Some
-from ..imports import golem_rpc_types
 from ..imports import wall_clock
-from ..imports import context
 from ..imports import host
+from ..imports import golem_rpc_types
+from ..imports import context
 
 
 @dataclass

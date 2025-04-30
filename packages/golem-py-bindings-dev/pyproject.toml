@@ -6,9 +6,8 @@ classifiers = [
     "Private :: Do Not Upload"
 ]
 dependencies = [
-    "generated-placeholder-bindings"
+    "componentize-py==0.16.0"
 ]
-
 
 [build-system]
 requires = ["uv_build"]
@@ -17,6 +16,3 @@ build-backend = "uv_build"
 [tool.uv.build-backend]
 module-root = "src"
 module-name = "golem_py_bindings"
-
-[tool.uv.sources]
-generated-placeholder-bindings = { workspace = true }

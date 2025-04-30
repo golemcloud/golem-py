@@ -6,11 +6,11 @@ from abc import abstractmethod
 import weakref
 
 from ..types import Result, Ok, Err, Some
-from ..imports import host
-from ..imports import golem_rpc_types
+from ..imports import wall_clock
 from ..imports import oplog
 from ..imports import poll
-from ..imports import wall_clock
+from ..imports import host
+from ..imports import golem_rpc_types
 
 @dataclass
 class DurableExecutionState:

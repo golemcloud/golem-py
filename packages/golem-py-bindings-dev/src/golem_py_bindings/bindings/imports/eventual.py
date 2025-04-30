@@ -41,7 +41,7 @@ def get(bucket: wasi_keyvalue_types.Bucket, key: str) -> Optional[wasi_keyvalue_
     
     If any other error occurs, it returns an `Err(error)`.
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+    Raises: `bindings.types.Err(bindings.imports.Any)`
     """
     raise NotImplementedError
 
@@ -54,7 +54,7 @@ def set(bucket: wasi_keyvalue_types.Bucket, key: str, outgoing_value: wasi_keyva
     
     If any other error occurs, it returns an `Err(error)`.
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+    Raises: `bindings.types.Err(bindings.imports.Any)`
     """
     raise NotImplementedError
 
@@ -66,7 +66,7 @@ def delete(bucket: wasi_keyvalue_types.Bucket, key: str) -> None:
     
     If any other error occurs, it returns an `Err(error)`.
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+    Raises: `bindings.types.Err(bindings.imports.Any)`
     """
     raise NotImplementedError
 
@@ -79,7 +79,7 @@ def exists(bucket: wasi_keyvalue_types.Bucket, key: str) -> bool:
     
     If any other error occurs, it returns an `Err(error)`.
     
-    Raises: `placeholder_world.types.Err(placeholder_world.imports.Any)`
+    Raises: `bindings.types.Err(bindings.imports.Any)`
     """
     raise NotImplementedError
 
