@@ -1,18 +1,17 @@
-from enum import Enum
+"""
+Durability tools for implementing custom durable functions.
+
+Requires the following imports in the wit to work:
+* import golem:rpc/types@0.2.0;
+* import golem:api/host@1.1.6;
+* import golem:api/oplog@1.1.6;
+* import golem:durability/durability@1.2.0;
+"""
 
 from golem_py_bindings.bindings.imports import oplog as host_oplog
 from golem_py_bindings.bindings.imports import durability as host_durability
 from golem_py_bindings.bindings.imports import host
 from golem_py_bindings.bindings.imports.golem_rpc_types import ValueAndType
-
-
-class DurableFunctionType(Enum):
-    ReadLocal = 1
-    WriteLocal = 2
-    ReadRemote = 3
-    WriteRemote = 4
-    WriteRemoteBatched = 5
-
 
 class Durability:
     def __init__(
