@@ -8,12 +8,29 @@ import weakref
 from ..types import Result, Ok, Err, Some
 
 
-class Run(Protocol):
-    @abstractmethod
-    def run(self) -> None:
-        """
-        Run the program.
+class OplogProcessor(Protocol):
+    pass
 
-        Raises: `placeholder_world.types.Err(None)`
+class LoadSnapshot(Protocol):
+
+    @abstractmethod
+    def load(self, bytes: bytes) -> None:
+        """
+        Tries to load a user-defined snapshot, setting up the worker's state based on it.
+        The function can return with a failure to indicate that the update is not possible.
+        
+        Raises: `placeholder_world.types.Err(placeholder_world.imports.str)`
         """
         raise NotImplementedError
+
+
+class SaveSnapshot(Protocol):
+
+    @abstractmethod
+    def save(self) -> bytes:
+        """
+        Saves the component's state into a user-defined snapshot
+        """
+        raise NotImplementedError
+
+

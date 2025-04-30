@@ -13,6 +13,7 @@ members = [
     "golem-py-bindings",
     "golem-py-bindings-dev",
 ]
+overrides = [{ name = "golem-py-bindings", marker = "sys_platform == 'never'", editable = "packages/golem-py-bindings" }]
 
 [[package]]
 name = "colorama"
@@ -65,28 +66,23 @@ name = "golem-py"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "golem-py-bindings" },
+    { name = "golem-py-bindings", marker = "sys_platform == 'never'" },
 ]
 
 [package.dev-dependencies]
 dev = [
     { name = "componentize-py" },
-    { name = "generated-placeholder-bindings" },
     { name = "golem-py-bindings-dev" },
     { name = "pytest" },
     { name = "ruff" },
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "golem-py-bindings", marker = "sys_platform != 'never'", specifier = "==0.1.0" },
-    { name = "golem-py-bindings", marker = "sys_platform == 'never'", editable = "packages/golem-py-bindings" },
-]
+requires-dist = [{ name = "golem-py-bindings", editable = "packages/golem-py-bindings" }]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "componentize-py", specifier = "==0.16.0" },
-    { name = "generated-placeholder-bindings", editable = "packages/generated-placeholder-bindings" },
     { name = "golem-py-bindings-dev", editable = "packages/golem-py-bindings-dev" },
     { name = "pytest", specifier = ">=8.3.5" },
     { name = "ruff", specifier = ">=0.11.7" },
