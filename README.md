@@ -7,13 +7,13 @@ golem-py is built on top of [componentize-py](https://github.com/bytecodeallianc
 To set up a project begin by creating a wit directory and defining a world that your component will implement:
 
 ```wit
-package unused:unused;
+package demo-namespace:demo-package;
 
 interface demo-api {
   run: func();
 }
 
-world demo {
+world demo-world {
   import wasi:http/types@0.2.0;
   import wasi:http/outgoing-handler@0.2.0;
   import golem:api/host@1.1.6;
@@ -27,7 +27,7 @@ the following code snippet at the top of your python code. Make sure to place it
 
 ```python
 import golem_py_bindings
-golem_py_bindings.register_bindings("demo") # Put the name of your world here
+golem_py_bindings.register_bindings("demo_world") # Put the name of your world here
 ```
 
 You can now use golem-py in your project:

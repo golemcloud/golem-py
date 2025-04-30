@@ -47,3 +47,8 @@ override-dependencies = [
     # We don't want to use this when developing locally. Instead the apis will be provided by golem-py-bindings-dev
     "golem-py-bindings; sys_platform == 'never'",
 ]
+
+[tool.ruff]
+exclude = [
+    "packages/golem-py-bindings-dev/src/golem_py_bindings/bindings/*"
+]
