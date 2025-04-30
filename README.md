@@ -33,8 +33,9 @@ golem_py_bindings.register_bindings("demo_world") # Put the name of your world h
 You can now use golem-py in your project:
 ```python
 from golem_py.durability import Durability, DurableFunctionType
+from demo_world.imports.oplog import WrappedFunctionType_ReadLocal
 
-durability = Durability("custom", "random-number-generator", DurableFunctionType.ReadLocal)
+durability = Durability("custom", "random-number-generator", WrappedFunctionType_ReadLocal)
 ```
 
 Note:
