@@ -9,14 +9,11 @@ from ..types import Result, Ok, Err, Some
 
 
 class Run(Protocol):
-
     @abstractmethod
     def run(self) -> None:
         """
         Run the program.
-        
+
         Raises: `placeholder_world.types.Err(None)`
         """
         raise NotImplementedError
-
-

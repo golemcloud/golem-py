@@ -29,7 +29,8 @@ dev = [
     "pytest>=8.3.5",
     "ruff>=0.11.7",
     "componentize-py==0.16.0",
-    "golem-py-bindings-dev"
+    "golem-py-bindings-dev",
+    "generated-placeholder-bindings"
 ]
 
 [tool.uv.build-backend]
@@ -39,11 +40,11 @@ module-root = "src"
 members = ["packages/*"]
 
 [tool.uv.sources]
-golem-py-bindings = { workspace = true }
+# it's part of the workspace, but we don't want to use it when developing locally
+golem-py-bindings = { workspace = true, marker = "sys_platform == 'never'" }
 golem-py-bindings-dev = { workspace = true }
 
 [tool.uv]
 override-dependencies = [
-    # exclude golem-py-bindings when developing and use the dev version instead
     "golem-py-bindings; sys_platform == 'never'",
 ]

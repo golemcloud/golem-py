@@ -6,5 +6,3 @@ from abc import abstractmethod
 import weakref
 
 from ..types import Result, Ok, Err, Some
-
-
