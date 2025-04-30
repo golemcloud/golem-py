@@ -1,0 +1,22 @@
+[project]
+name = "golem-py-bindings-dev"
+version = "0.1.0"
+requires-python = ">=3.9"
+classifiers = [
+    "Private :: Do Not Upload"
+]
+dependencies = [
+    "generated-placeholder-bindings"
+]
+
+
+[build-system]
+requires = ["uv_build"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = "src"
+module-name = "golem_py_bindings"
+
+[tool.uv.sources]
+generated-placeholder-bindings = { workspace = true }

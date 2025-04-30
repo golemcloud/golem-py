@@ -1,5 +1,5 @@
 [project]
-name = "golem_py"
+name = "golem-py"
 version = "0.1.0"
 description = "A library that helps with writing Golem components in Python "
 readme = "README.md"
@@ -11,6 +11,9 @@ classifiers = [
     "Environment :: WebAssembly :: WASI",
     "Typing :: Typed"
 ]
+dependencies = [
+    "golem-py-bindings==0.1.0"
+]
 
 [project.urls]
 Homepage = "https://github.com/golemcloud/golem-py"
@@ -21,11 +24,26 @@ Repository = "https://github.com/golemcloud/golem-py"
 requires = ["uv_build"]
 build-backend = "uv_build"
 
-[tool.uv.build-backend]
-module-root = "src"
-
 [dependency-groups]
 dev = [
     "pytest>=8.3.5",
     "ruff>=0.11.7",
+    "componentize-py==0.16.0",
+    "golem-py-bindings-dev"
+]
+
+[tool.uv.build-backend]
+module-root = "src"
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv.sources]
+golem-py-bindings = { workspace = true }
+golem-py-bindings-dev = { workspace = true }
+
+[tool.uv]
+override-dependencies = [
+    # exclude golem-py-bindings when developing and use the dev version instead
+    "golem-py-bindings; sys_platform == 'never'",
 ]
