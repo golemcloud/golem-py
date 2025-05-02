@@ -1,0 +1,35 @@
+"""
+Host functions to control various behaviours of the golem runtime.
+
+Requires the following imports in the wit to work:
+* import golem:api/host@1.1.6;
+"""
+
+from golem_py_bindings.bindings.imports.host import mark_begin_operation, mark_end_operation, RetryPolicy, get_retry_policy, set_retry_policy, get_idempotence_mode, set_idempotence_mode
+from contextlib import contextmanager
+
+@contextmanager
+def atomic_operation_context():
+    begin_index = mark_begin_operation()
+    try:
+        yield
+    finally:
+        mark_end_operation(begin_index)
+
+@contextmanager
+def use_retry_policy(policy: RetryPolicy):
+    original = get_retry_policy()
+    set_retry_policy(policy)
+    try:
+        yield
+    finally:
+        set_retry_policy(original)
+
+@contextmanager
+def use_idempotence_mode(value: bool):
+    original = get_idempotence_mode()
+    set_idempotence_mode(value)
+    try:
+        yield
+    finally:
+        set_idempotence_mode(original)
