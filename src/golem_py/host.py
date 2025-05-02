@@ -5,8 +5,17 @@ Requires the following imports in the wit to work:
 * import golem:api/host@1.1.6;
 """
 
-from golem_py_bindings.bindings.imports.host import mark_begin_operation, mark_end_operation, RetryPolicy, get_retry_policy, set_retry_policy, get_idempotence_mode, set_idempotence_mode
+from golem_py_bindings.bindings.imports.host import (
+    mark_begin_operation,
+    mark_end_operation,
+    RetryPolicy,
+    get_retry_policy,
+    set_retry_policy,
+    get_idempotence_mode,
+    set_idempotence_mode,
+)
 from contextlib import contextmanager
+
 
 @contextmanager
 def atomic_operation_context():
@@ -16,6 +25,7 @@ def atomic_operation_context():
     finally:
         mark_end_operation(begin_index)
 
+
 @contextmanager
 def use_retry_policy(policy: RetryPolicy):
     original = get_retry_policy()
@@ -24,6 +34,7 @@ def use_retry_policy(policy: RetryPolicy):
         yield
     finally:
         set_retry_policy(original)
+
 
 @contextmanager
 def use_idempotence_mode(value: bool):
