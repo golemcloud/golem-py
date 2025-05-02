@@ -30,14 +30,10 @@ def register_bindings(world_name: str) -> None:
     try_load_all(
         [
             "exports",
-            "exports.run",
             "imports",
-            "imports.error",
-            "imports.monotonic_clock",
-            "imports.outgoing_handler",
-            "imports.poll",
-            "imports.streams",
-            "imports.types",
-            "types",
+            "imports.host",
+            "imports.durability",
+            "imports.oplog",
+            "imports.golem_rpc_typestypes",
         ]
     )

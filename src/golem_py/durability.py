@@ -13,6 +13,7 @@ from golem_py_bindings.bindings.imports import durability as host_durability
 from golem_py_bindings.bindings.imports import host
 from golem_py_bindings.bindings.imports.golem_rpc_types import ValueAndType
 
+
 class Durability:
     def __init__(
         self,
