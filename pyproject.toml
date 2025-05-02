@@ -3,7 +3,7 @@ name = "golem-py"
 version = "0.1.0"
 description = "A library that helps with writing Golem components in Python "
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 license = "Apache-2.0"
 license-files = [ "LICENSE" ]
 classifiers = [
@@ -36,7 +36,7 @@ dev = [
 module-root = "src"
 
 [tool.uv.workspace]
-members = ["packages/*"]
+members = ["packages/*", "examples"]
 
 [tool.uv.sources]
 golem-py-bindings = { workspace = true, marker = "sys_platform == 'never'" }

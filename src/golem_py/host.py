@@ -13,12 +13,21 @@ from golem_py_bindings.bindings.imports.host import (
     set_retry_policy,
     get_idempotence_mode,
     set_idempotence_mode,
+    PersistenceLevel,
+    get_oplog_persistence_level,
+    set_oplog_persistence_level,
 )
 from contextlib import contextmanager
 
 
 @contextmanager
 def atomic_operation_context():
+    """
+    Marks a block as an atomic operation
+
+    When the returned guard is dropped, the operation gets committed.
+    In case of a failure, the whole operation will be re-executed during retry
+    """
     begin_index = mark_begin_operation()
     try:
         yield
@@ -28,6 +37,11 @@ def atomic_operation_context():
 
 @contextmanager
 def use_retry_policy(policy: RetryPolicy):
+    """
+    Temporarily sets the retry policy to the given value.
+
+    When the returned guard is dropped, the original retry policy is restored
+    """
     original = get_retry_policy()
     set_retry_policy(policy)
     try:
@@ -38,9 +52,29 @@ def use_retry_policy(policy: RetryPolicy):
 
 @contextmanager
 def use_idempotence_mode(value: bool):
+    """
+    Temporarily sets the idempotence mode to the given value.
+
+    When the returned guard is dropped, the original idempotence mode is restored.
+    """
     original = get_idempotence_mode()
     set_idempotence_mode(value)
     try:
         yield
     finally:
         set_idempotence_mode(original)
+
+
+@contextmanager
+def use_persistence_level(value: PersistenceLevel):
+    """
+    Temporarily sets the oplog persistence level to the given value.
+
+    When the returned guard is dropped, the original persistence level is restored.
+    """
+    original = get_oplog_persistence_level()
+    set_oplog_persistence_level(value)
+    try:
+        yield
+    finally:
+        set_oplog_persistence_level(original)

@@ -15,6 +15,11 @@ from .host import atomic_operation_context
 
 @dataclass
 class Operation[In, Out, Err]:
+    """
+    An operation that can be executed as part of transaction. Consists of an action and a compensating action
+    that can undo the side effects of the action.
+    """
+
     _execute: Callable[[In], Result[Out, Err]]
     _compensate: Callable[[In, Out], Result[None, Err]]
 
@@ -29,16 +34,27 @@ def operation[In, Out, Err](
     execute: Callable[[In], Result[Out, Err]],
     compensate: Callable[[In, Out], Result[None, Err]],
 ) -> Operation[In, Out, Err]:
+    """
+    Create a new Operation from two functions.
+    """
     return Operation(execute, compensate)
 
 
 @dataclass
 class FailedAndRolledBackCompletely[Err]:
+    """
+    The transaction has failed and all compensating actions have successfully completed.
+    """
+
     error: Err
 
 
 @dataclass
 class FailedAndRolledBackPartially[Err]:
+    """
+    The transaction has failed and the compensating actions failed to complete.
+    """
+
     error: Err
     compensation_failure: Err
 
@@ -52,6 +68,12 @@ type TransactionResult[Out, Err] = Result[Out, TransactionFailure[Err]]
 
 @dataclass
 class FallibleTransaction[Err]:
+    """
+    Fallible transaction execution. If any operation fails, all the already executed
+    successful operation's compensation actions are executed in reverse order and the transaction
+    returns with a failure.
+    """
+
     compensations: list[Callable[[], Result[None, Err]]]
 
     def execute[In, Out](
@@ -73,21 +95,29 @@ class FallibleTransaction[Err]:
 def fallible_transaction[Out, Err](
     f: Callable[[FallibleTransaction[Err]], Result[Out, Err]],
 ) -> TransactionResult[Out, Err]:
-    with atomic_operation_context():
-        transaction = FallibleTransaction([])
-        result = f(transaction)
-        if isinstance(result, types.Err):
-            return types.Err(transaction._on_failure(result.value))
-        else:
-            return result
+    """
+    Execute a fallible transaction.
+    """
+    transaction = FallibleTransaction([])
+    result = f(transaction)
+    if isinstance(result, types.Err):
+        return types.Err(transaction._on_failure(result.value))
+    else:
+        return result
 
 
 @dataclass
 class InfallibleTransaction:
+    """
+    Retry the transaction in case of failure. If any operation returns with a failure, all
+    the already executed successful operation's compensation actions are executed in reverse order
+    and the transaction gets retried, using Golem's active retry policy.
+    """
+
     compensations: list[Callable[[], None]]
     begin_oplog_index: int
 
-    def execute[In, Out](self, op: Operation[In, Out, Err], input: In) -> Out:
+    def execute[In, Out, Err](self, op: Operation[In, Out, Err], input: In) -> Out:
         result = op.execute(input)
         if isinstance(result, Ok):
 
@@ -113,6 +143,9 @@ class InfallibleTransaction:
 
 
 def infallible_transaction[Out](f: Callable[[InfallibleTransaction], Out]) -> Out:
+    """
+    Execute an infallible transaction.
+    """
     with atomic_operation_context():
         begin_oplog_index = get_oplog_index()
         transaction = InfallibleTransaction([], begin_oplog_index)
