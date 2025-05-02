@@ -95,7 +95,7 @@ class InfallibleTransaction:
                 comp_result = op.compensate(input, result.value)
                 if isinstance(comp_result, types.Err):
                     raise ValueError(
-                        f"Compensating actions are not allowed to fail in infallible transaction",
+                        "Compensating actions are not allowed to fail in infallible transaction",
                         comp_result.value,
                     )
                 self.compensations.append(compensation)
