@@ -25,14 +25,12 @@ def atomic_operation_context():
     """
     Marks a block as an atomic operation
 
-    When the returned guard is dropped, the operation gets committed.
-    In case of a failure, the whole operation will be re-executed during retry
+    When the context is exited, the operation gets committed.
+    If the context exits with an error, the whole operation will be re-executed during retry
     """
     begin_index = mark_begin_operation()
-    try:
-        yield
-    finally:
-        mark_end_operation(begin_index)
+    yield
+    mark_end_operation(begin_index)
 
 
 @contextmanager
@@ -40,7 +38,7 @@ def use_retry_policy(policy: RetryPolicy):
     """
     Temporarily sets the retry policy to the given value.
 
-    When the returned guard is dropped, the original retry policy is restored
+    When the context is exited, the original retry policy is restored
     """
     original = get_retry_policy()
     set_retry_policy(policy)
@@ -55,7 +53,7 @@ def use_idempotence_mode(value: bool):
     """
     Temporarily sets the idempotence mode to the given value.
 
-    When the returned guard is dropped, the original idempotence mode is restored.
+    When the context is exited, the original idempotence mode is restored.
     """
     original = get_idempotence_mode()
     set_idempotence_mode(value)
@@ -70,7 +68,7 @@ def use_persistence_level(value: PersistenceLevel):
     """
     Temporarily sets the oplog persistence level to the given value.
 
-    When the returned guard is dropped, the original persistence level is restored.
+    When the context is exited, the original persistence level is restored.
     """
     original = get_oplog_persistence_level()
     set_oplog_persistence_level(value)
