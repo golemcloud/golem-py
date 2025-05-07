@@ -5,11 +5,11 @@ requires-python = ">=3.12"
 [manifest]
 members = [
     "examples",
-    "golem-py",
-    "golem-py-bindings",
-    "golem-py-bindings-dev",
+    "golem-cloud",
+    "golem-cloud-bindings",
+    "golem-cloud-bindings-dev",
 ]
-overrides = [{ name = "golem-py-bindings", marker = "sys_platform == 'never'", editable = "packages/golem-py-bindings" }]
+overrides = [{ name = "golem-cloud-bindings", marker = "sys_platform == 'never'", editable = "packages/golem-cloud-bindings" }]
 
 [[package]]
 name = "colorama"
@@ -38,51 +38,51 @@ name = "examples"
 version = "0.1.0"
 source = { virtual = "examples" }
 dependencies = [
-    { name = "golem-py" },
+    { name = "golem-cloud" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "golem-py", editable = "." }]
+requires-dist = [{ name = "golem-cloud", editable = "." }]
 
 [[package]]
-name = "golem-py"
+name = "golem-cloud"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "golem-py-bindings", marker = "sys_platform == 'never'" },
+    { name = "golem-cloud-bindings", marker = "sys_platform == 'never'" },
 ]
 
 [package.dev-dependencies]
 dev = [
     { name = "componentize-py" },
-    { name = "golem-py-bindings-dev" },
+    { name = "golem-cloud-bindings-dev" },
     { name = "pytest" },
     { name = "ruff" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "golem-py-bindings", marker = "sys_platform != 'never'", specifier = "==0.1.0" },
-    { name = "golem-py-bindings", marker = "sys_platform == 'never'", editable = "packages/golem-py-bindings" },
+    { name = "golem-cloud-bindings", marker = "sys_platform != 'never'", specifier = "==0.1.0" },
+    { name = "golem-cloud-bindings", marker = "sys_platform == 'never'", editable = "packages/golem-cloud-bindings" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "componentize-py", specifier = "==0.16.0" },
-    { name = "golem-py-bindings-dev", editable = "packages/golem-py-bindings-dev" },
+    { name = "golem-cloud-bindings-dev", editable = "packages/golem-cloud-bindings-dev" },
     { name = "pytest", specifier = ">=8.3.5" },
     { name = "ruff", specifier = ">=0.11.7" },
 ]
 
 [[package]]
-name = "golem-py-bindings"
+name = "golem-cloud-bindings"
 version = "0.1.0"
-source = { editable = "packages/golem-py-bindings" }
+source = { editable = "packages/golem-cloud-bindings" }
 
 [[package]]
-name = "golem-py-bindings-dev"
+name = "golem-cloud-bindings-dev"
 version = "0.1.0"
-source = { editable = "packages/golem-py-bindings-dev" }
+source = { editable = "packages/golem-cloud-bindings-dev" }
 dependencies = [
     { name = "componentize-py" },
 ]
