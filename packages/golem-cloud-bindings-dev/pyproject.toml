@@ -1,5 +1,5 @@
 [project]
-name = "golem-py-bindings-dev"
+name = "golem-cloud-bindings-dev"
 version = "0.1.0"
 requires-python = ">=3.12"
 classifiers = [
@@ -15,4 +15,4 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 module-root = "src"
-module-name = "golem_py_bindings"
+module-name = "golem_cloud_bindings"

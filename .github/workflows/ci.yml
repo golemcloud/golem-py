@@ -40,9 +40,11 @@ jobs:
           include_passed: true
 
   publish:
+    name: publish main package
     needs: [check]
     if: "startsWith(github.ref, 'refs/tags/v')"
     runs-on: ubuntu-latest
+    environment: pypi
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -59,7 +61,34 @@ jobs:
         uses: battila7/get-version-action@v2
 
       - name: Build the project
-        run: uv build --all-packages
+        run: uv build --package golem-cloud
+
+      - name: Publish to pypi
+        run: uv publish
+
+  publish-bindings:
+    name: publish bindings
+    needs: [check]
+    if: "startsWith(github.ref, 'refs/tags/v')"
+    runs-on: ubuntu-latest
+    environment: pypi-bindings
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install the project
+        run: uv sync --locked --all-extras --dev
+
+      - id: get_version
+        uses: battila7/get-version-action@v2
+
+      - name: Build the project
+        run: uv build --package golem-cloud-bindings
 
       - name: Publish to pypi
         run: uv publish

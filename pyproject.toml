@@ -1,5 +1,5 @@
 [project]
-name = "golem-py"
+name = "golem-cloud"
 version = "0.1.0"
 description = "A library that helps with writing Golem components in Python "
 readme = "README.md"
@@ -12,7 +12,7 @@ classifiers = [
     "Typing :: Typed"
 ]
 dependencies = [
-    "golem-py-bindings==0.1.0"
+    "golem-cloud-bindings==0.1.0"
 ]
 
 [project.urls]
@@ -29,7 +29,7 @@ dev = [
     "pytest>=8.3.5",
     "ruff>=0.11.7",
     "componentize-py==0.16.0",
-    "golem-py-bindings-dev"
+    "golem-cloud-bindings-dev"
 ]
 
 [tool.uv.build-backend]
@@ -39,16 +39,16 @@ module-root = "src"
 members = ["packages/*", "examples"]
 
 [tool.uv.sources]
-golem-py-bindings = { workspace = true, marker = "sys_platform == 'never'" }
-golem-py-bindings-dev = { workspace = true }
+golem-cloud-bindings = { workspace = true, marker = "sys_platform == 'never'" }
+golem-cloud-bindings-dev = { workspace = true }
 
 [tool.uv]
 override-dependencies = [
     # We don't want to use this when developing locally. Instead the apis will be provided by golem-py-bindings-dev
-    "golem-py-bindings; sys_platform == 'never'",
+    "golem-cloud-bindings; sys_platform == 'never'",
 ]
 
 [tool.ruff]
 exclude = [
-    "packages/golem-py-bindings-dev/src/golem_py_bindings/bindings/*"
+    "packages/golem-cloud-bindings-dev/src/golem_cloud_bindings/bindings/*"
 ]
