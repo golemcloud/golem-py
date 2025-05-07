@@ -5,7 +5,7 @@ Requires the following imports in the wit to work:
 * import golem:api/host@1.1.6;
 """
 
-from golem_py_bindings.bindings.imports.host import (
+from golem_cloud_bindings.bindings.imports.host import (
     mark_begin_operation,
     mark_end_operation,
     RetryPolicy,
