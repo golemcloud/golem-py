@@ -6,11 +6,11 @@ classifiers = [
     "Private :: Do Not Upload"
 ]
 dependencies = [
-    "golem-py"
+    "golem-cloud"
 ]
 
 [tool.uv.sources]
-golem-py = { workspace = true }
+golem-cloud = { workspace = true }
 
 [tool.uv]
 package = false

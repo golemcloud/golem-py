@@ -44,7 +44,7 @@ golem-cloud-bindings-dev = { workspace = true }
 
 [tool.uv]
 override-dependencies = [
-    # We don't want to use this when developing locally. Instead the apis will be provided by golem-py-bindings-dev
+    # We don't want to use this when developing locally. Instead the apis will be provided by golem-cloud-bindings-dev
     "golem-cloud-bindings; sys_platform == 'never'",
 ]
 

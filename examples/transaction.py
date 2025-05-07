@@ -1,4 +1,4 @@
-from golem_py.transaction import (
+from golem_cloud.transaction import (
     Result,
     Operation,
     operation,
