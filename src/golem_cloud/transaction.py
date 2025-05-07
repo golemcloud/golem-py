@@ -6,9 +6,9 @@ Requires the following imports in the wit to work:
 """
 
 from dataclasses import dataclass
-from golem_py_bindings.bindings import types
-from golem_py_bindings.bindings.types import Result, Ok
-from golem_py_bindings.bindings.imports.host import set_oplog_index, get_oplog_index
+from golem_cloud_bindings.bindings import types
+from golem_cloud_bindings.bindings.types import Result, Ok
+from golem_cloud_bindings.bindings.imports.host import set_oplog_index, get_oplog_index
 from typing import Callable
 from .host import atomic_operation_context
 
