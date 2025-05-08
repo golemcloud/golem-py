@@ -46,7 +46,7 @@ requires-dist = [{ name = "golem-cloud", editable = "." }]
 
 [[package]]
 name = "golem-cloud"
-version = "0.1.0"
+version = "0.1.1"
 source = { editable = "." }
 dependencies = [
     { name = "golem-cloud-bindings", marker = "sys_platform == 'never'" },
@@ -62,7 +62,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "golem-cloud-bindings", marker = "sys_platform != 'never'", specifier = "==0.1.0" },
+    { name = "golem-cloud-bindings", marker = "sys_platform != 'never'", specifier = "==0.1.1" },
     { name = "golem-cloud-bindings", marker = "sys_platform == 'never'", editable = "packages/golem-cloud-bindings" },
 ]
 
@@ -76,12 +76,12 @@ dev = [
 
 [[package]]
 name = "golem-cloud-bindings"
-version = "0.1.0"
+version = "0.1.1"
 source = { editable = "packages/golem-cloud-bindings" }
 
 [[package]]
 name = "golem-cloud-bindings-dev"
-version = "0.1.0"
+version = "0.1.1"
 source = { editable = "packages/golem-cloud-bindings-dev" }
 dependencies = [
     { name = "componentize-py" },
