@@ -6,9 +6,9 @@ from abc import abstractmethod
 import weakref
 
 from ..types import Result, Ok, Err, Some
+from ..imports import oplog
 from ..imports import host
 from ..imports import golem_rpc_types
-from ..imports import oplog
 
 @dataclass
 class AccountInfo:

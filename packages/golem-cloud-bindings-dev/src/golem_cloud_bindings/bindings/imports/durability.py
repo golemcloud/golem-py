@@ -7,9 +7,9 @@ import weakref
 
 from ..types import Result, Ok, Err, Some
 from ..imports import wall_clock
-from ..imports import oplog
 from ..imports import poll
 from ..imports import host
+from ..imports import oplog
 from ..imports import golem_rpc_types
 
 @dataclass

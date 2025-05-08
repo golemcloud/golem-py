@@ -198,6 +198,13 @@ Target parameter for the `revert-worker` operation
 """
 
 
+class ForkResult(Enum):
+    """
+    Indicates which worker the code is running on after `fork`
+    """
+    ORIGINAL = 0
+    FORKED = 1
+
 
 def create_promise() -> PromiseId:
     """
@@ -373,6 +380,14 @@ def resolve_worker_id_strict(component_reference: str, worker_name: str) -> Opti
     """
     Get the worker-id for a given component and worker name.
     Returns none when no component for the specified component-reference or no worker with the specified worker-name exists.
+    """
+    raise NotImplementedError
+
+def fork(new_name: str) -> ForkResult:
+    """
+    Forks the current worker at the current execution point. The new worker gets the `new-name` worker name,
+    and this worker continues running as well. The return value is going to be different in this worker and
+    the forked worker.
     """
     raise NotImplementedError
 

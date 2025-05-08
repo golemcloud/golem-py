@@ -9,8 +9,8 @@ from abc import abstractmethod
 import weakref
 
 from ..types import Result, Ok, Err, Some
-from ..imports import container
 from ..imports import wasi_blobstore_types
+from ..imports import container
 
 
 def create_container(name: str) -> container.Container:
