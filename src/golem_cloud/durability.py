@@ -8,11 +8,10 @@ Requires the following imports in the wit to work:
 * import golem:durability/durability@1.2.0;
 """
 
-from golem_cloud_bindings.bindings.imports import oplog as host_oplog
-from golem_cloud_bindings.bindings.imports import durability as host_durability
-from golem_cloud_bindings.bindings.imports import host
-from golem_cloud_bindings.bindings.imports.golem_rpc_types import ValueAndType
-
+from wit_world.imports import oplog as host_oplog
+from wit_world.imports import durability as host_durability
+from wit_world.imports import host
+from wit_world.imports.golem_rpc_types import ValueAndType
 
 class Durability:
     def __init__(
