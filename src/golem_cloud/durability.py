@@ -2,10 +2,10 @@
 Durability tools for implementing custom durable functions.
 
 Requires the following imports in the wit to work:
-* import golem:rpc/types@0.2.0;
-* import golem:api/host@1.1.6;
-* import golem:api/oplog@1.1.6;
-* import golem:durability/durability@1.2.0;
+* import golem:rpc/types@0.2.3;
+* import golem:api/host@1.1.7;
+* import golem:api/oplog@1.1.7;
+* import golem:durability/durability@1.2.1;
 """
 
 from wit_world.imports import oplog as host_oplog
