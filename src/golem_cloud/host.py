@@ -2,7 +2,7 @@
 Host functions to control various behaviours of the golem runtime.
 
 Requires the following imports in the wit to work:
-* import golem:api/host@1.1.6;
+* import golem:api/host@1.1.7;
 """
 
 from wit_world.imports.host import (

@@ -2,7 +2,7 @@
 Tools to perform transactional operations using compensating actions.
 
 Requires the following imports in the wit to work:
-* import golem:api/host@1.1.6;
+* import golem:api/host@1.1.7;
 """
 
 from dataclasses import dataclass
